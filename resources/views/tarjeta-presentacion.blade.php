@@ -434,7 +434,7 @@
                     >
 
                         <img
-                            src="{{ asset('images/croquis.jpg') }}"
+                            src="{{ asset('images/croquis_utepsa.webp') }}"
                             alt="Croquis de ubicación"
                             class="croquis"
                         >
@@ -473,7 +473,7 @@
 
             <img
                 id="croquisAmpliado"
-                src="{{ asset('images/croquis.jpg') }}"
+                src="{{ asset('images/croquis_utepsa.webp') }}"
                 alt="Croquis ampliado"
                 class="croquis-ampliado"
             >
