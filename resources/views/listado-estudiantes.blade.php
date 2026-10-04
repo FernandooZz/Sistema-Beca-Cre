@@ -142,6 +142,21 @@
                 width: 100%;
             }
         }
+
+        .boton-cerrar-sesion {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.boton-cerrar-sesion:hover {
+    background: #b02a37;
+}
     </style>
 </head>
 
@@ -154,6 +169,13 @@
             alt="Examen de Beca Bachiller"
             class="logo"
         >
+
+        <form action="{{ route('administrador.logout') }}" method="POST">
+    @csrf
+    <button type="submit" class="boton-cerrar-sesion">
+    Cerrar sesión
+</button>
+</form>
 
     </header>
 
@@ -175,12 +197,6 @@
                     Estudiantes registrados
                 </span>
 
-                <input
-                    type="text"
-                    class="buscador"
-                    placeholder="Buscar estudiante..."
-                >
-
             </div>
 
             <div class="tabla-contenedor">
@@ -197,25 +213,33 @@
 
                     <tbody>
 
-                        <tr>
-                            <td>Ejemplo Estudiante</td>
-                            <td>Ingeniería de Sistemas</td>
-                            <td>03/10/2026</td>
-                        </tr>
+    @forelse ($estudiantes as $estudiante)
 
-                        <tr>
-                            <td>Ejemplo Estudiante 2</td>
-                            <td>Ingeniería Comercial</td>
-                            <td>03/10/2026</td>
-                        </tr>
+        <tr>
+            <td>
+                {{ $estudiante->nombre }}
+            </td>
 
-                        <tr>
-                            <td>Ejemplo Estudiante 3</td>
-                            <td>Psicología</td>
-                            <td>03/10/2026</td>
-                        </tr>
+            <td>
+                {{ $estudiante->carrera->nombre_carrera }}
+            </td>
 
-                    </tbody>
+            <td>
+                {{ $estudiante->fecha_registro->format('d/m/Y H:i') }}
+            </td>
+        </tr>
+
+    @empty
+
+        <tr>
+            <td colspan="3">
+                No hay estudiantes registrados.
+            </td>
+        </tr>
+
+    @endforelse
+
+</tbody>
 
                 </table>
 

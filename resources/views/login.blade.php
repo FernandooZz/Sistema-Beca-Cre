@@ -122,33 +122,45 @@
             Acceso para administradores
         </p>
 
-        <div class="campo">
-            <label for="usuario">Usuario</label>
+        <form action="{{ route('administrador.login') }}" method="POST">
 
-            <input
-                type="text"
-                id="usuario"
-                name="usuario"
-                placeholder="Ingrese su usuario"
-                autocomplete="username"
-            >
+    @csrf
+
+    <div class="campo">
+        <label for="usuario">Usuario</label>
+
+        <input
+            type="text"
+            id="usuario"
+            name="usuario"
+            placeholder="Ingrese su usuario"
+            required
+        >
+    </div>
+
+    <div class="campo">
+        <label for="contraseña">Contraseña</label>
+
+        <input
+            type="password"
+            id="contraseña"
+            name="contraseña"
+            placeholder="Ingrese su contraseña"
+            required
+        >
+    </div>
+
+    @if(session('error'))
+        <div class="mensaje-error">
+            {{ session('error') }}
         </div>
+    @endif
 
-        <div class="campo">
-            <label for="contraseña">Contraseña</label>
+    <button type="submit" class="boton">
+        Ingresar
+    </button>
 
-            <input
-                type="password"
-                id="contraseña"
-                name="contraseña"
-                placeholder="Ingrese su contraseña"
-                autocomplete="current-password"
-            >
-        </div>
-
-        <button type="button" class="boton">
-            Ingresar
-        </button>
+</form>
 
     </main>
 
