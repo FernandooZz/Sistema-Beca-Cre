@@ -28,24 +28,35 @@ class EstudianteController extends Controller
     }
 
     public function registrar(Request $request)
-    {
-        $estudiante = Estudiante::findOrFail(
-            $request->input('estudiante_id')
-        );
+{
+    $estudiante = Estudiante::findOrFail(
+        $request->input('estudiante_id')
+    );
 
-        $carrera = Carrera::findOrFail(
-            $request->input('carrera_id')
-        );
+    // Si el estudiante ya registró una carrera,
+    // no permitimos modificarla.
+    if ($estudiante->carrera_id !== null) {
+    return response()->json([
+        'success' => false,
+        'ya_registrado' => true,
+        'message' => 'Este estudiante ya realizó su registro.',
+        'estudiante_id' => $estudiante->id,
+    ]);
+}
 
-        $estudiante->update([
-            'carrera_id' => $carrera->id,
-            'fecha_registro' => now(),
-        ]);
+    $carrera = Carrera::findOrFail(
+        $request->input('carrera_id')
+    );
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Registro completado correctamente.',
-            'estudiante_id' => $estudiante->id,
-        ]);
-    }
+    $estudiante->update([
+        'carrera_id' => $carrera->id,
+        'fecha_registro' => now(),
+    ]);
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Registro completado correctamente.',
+        'estudiante_id' => $estudiante->id,
+    ]);
+}
 }

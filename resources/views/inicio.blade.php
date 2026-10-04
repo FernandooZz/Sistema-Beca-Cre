@@ -151,6 +151,17 @@
     color: #777;
 }
 
+.mensaje-registrado {
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.mensaje-registrado p {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
 
     </style>
 </head>
@@ -220,6 +231,14 @@
         <button type="button" class="boton" id="botonIngresar">
             Ingresar
         </button>
+
+        <div id="mensajeRegistrado" class="mensaje-registrado" style="display: none;">
+    <p>Este estudiante ya realizó su registro.</p>
+
+    <a id="botonVerAula" href="#" class="boton">
+        Ver mi aula
+    </a>
+</div>
 
     </main>
 
@@ -368,16 +387,29 @@ botonIngresar.addEventListener('click', function () {
     })
     .then(response => response.json())
     .then(data => {
+    if (data.success) {
+        window.location.href =
+            `/registro-completo?estudiante_id=${data.estudiante_id}`;
+        return;
+    }
 
-        if (data.success) {
-    window.location.href =
-        `/registro-completo?estudiante_id=${data.estudiante_id}`;
+    if (data.ya_registrado) {
+        const mensajeRegistrado =
+            document.getElementById('mensajeRegistrado');
 
-    return;
-}
-        alert('No se pudo completar el registro.');
+        const botonVerAula =
+            document.getElementById('botonVerAula');
 
-    })
+        botonVerAula.href =
+            `/tarjeta-presentacion?estudiante_id=${data.estudiante_id}`;
+
+        mensajeRegistrado.style.display = 'block';
+
+        return;
+    }
+
+    alert(data.message);
+})
     .catch(error => {
 
         console.error('Error al registrar:', error);
