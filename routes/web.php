@@ -7,5 +7,9 @@ Route::get('/', function () {
     return view('inicio');
 });
 
+Route::get('/registro-completo', function () {
+    return view('registro-completo');
+});
+
 Route::get('/buscar-estudiantes', [EstudianteController::class, 'buscar'])
     ->name('estudiantes.buscar');
