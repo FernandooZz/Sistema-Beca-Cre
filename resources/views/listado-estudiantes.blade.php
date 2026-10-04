@@ -33,12 +33,6 @@
             width: 130px;
             height: auto;
         }
-
-        .titulo-encabezado {
-            font-size: 14px;
-            color: #555;
-        }
-
         .contenedor {
             width: 100%;
             max-width: 1100px;
@@ -126,15 +120,6 @@
             background: #fafafa;
         }
 
-        .estado {
-            display: inline-block;
-            padding: 5px 10px;
-            background: #e7f8f1;
-            color: #00845f;
-            font-size: 12px;
-            border-radius: 3px;
-        }
-
         @media (max-width: 700px) {
             .encabezado {
                 padding: 15px 20px;
@@ -169,10 +154,6 @@
             alt="Examen de Beca Bachiller"
             class="logo"
         >
-
-        <span class="titulo-encabezado">
-            Panel de administración
-        </span>
 
     </header>
 
@@ -211,7 +192,6 @@
                             <th>Nombre</th>
                             <th>Carrera</th>
                             <th>Fecha de registro</th>
-                            <th>Estado</th>
                         </tr>
                     </thead>
 
@@ -221,33 +201,18 @@
                             <td>Ejemplo Estudiante</td>
                             <td>Ingeniería de Sistemas</td>
                             <td>03/10/2026</td>
-                            <td>
-                                <span class="estado">
-                                    Registrado
-                                </span>
-                            </td>
                         </tr>
 
                         <tr>
                             <td>Ejemplo Estudiante 2</td>
                             <td>Ingeniería Comercial</td>
                             <td>03/10/2026</td>
-                            <td>
-                                <span class="estado">
-                                    Registrado
-                                </span>
-                            </td>
                         </tr>
 
                         <tr>
                             <td>Ejemplo Estudiante 3</td>
                             <td>Psicología</td>
                             <td>03/10/2026</td>
-                            <td>
-                                <span class="estado">
-                                    Registrado
-                                </span>
-                            </td>
                         </tr>
 
                     </tbody>

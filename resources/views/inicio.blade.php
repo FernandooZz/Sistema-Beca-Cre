@@ -64,12 +64,14 @@
         .campo input,
         .campo select {
             width: 100%;
+            max-width: 100%;
             border: none;
             border-bottom: 1px solid #bdbdbd;
             padding: 10px 4px;
             font-size: 14px;
             outline: none;
             background: transparent;
+            box-sizing: border-box;
         }
 
         .campo input:focus,
@@ -103,9 +105,58 @@
             .titulo {
                 font-size: 24px;
             }
+            .campo select {
+                font-size: 14px;
+            }
         }
+
+.buscador-estudiante {
+    position: relative;
+}
+
+.sugerencias {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-top: none;
+    z-index: 100;
+    display: none;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.sugerencia {
+    padding: 11px 8px;
+    font-size: 13px;
+    color: #333;
+    cursor: pointer;
+    border-bottom: 1px solid #eeeeee;
+    background: #ffffff;
+}
+
+.sugerencia:hover {
+    background: #f5f5f5;
+}
+
+.sugerencia:last-child {
+    border-bottom: none;
+}
+
+.mensaje-sugerencia {
+    padding: 11px 8px;
+    font-size: 13px;
+    color: #777;
+}
+
+
     </style>
 </head>
+
+
+
 
 <body>
 
@@ -124,16 +175,33 @@
         </p>
 
         <div class="campo">
-            <label for="nombre">Nombre completo</label>
 
-            <input
-                type="text"
-                id="nombre"
-                name="nombre"
-                placeholder="Ingrese su nombre"
-                autocomplete="off"
-            >
-        </div>
+    <label for="nombre">Nombre completo</label>
+
+    <div class="buscador-estudiante">
+
+        <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Ingrese su nombre"
+            autocomplete="off"
+        >
+
+        <input
+            type="hidden"
+            id="estudiante_id"
+            name="estudiante_id"
+        >
+
+        <div
+            id="sugerencias"
+            class="sugerencias"
+        ></div>
+
+    </div>
+
+</div>
 
         <div class="campo">
             <label for="carrera">Seleccione una carrera</label>
@@ -167,5 +235,119 @@
 
     </main>
 
+
+
+
+    <script>
+
+    const campoNombre = document.getElementById('nombre');
+    const estudianteId = document.getElementById('estudiante_id');
+    const sugerencias = document.getElementById('sugerencias');
+
+    let temporizador;
+
+    campoNombre.addEventListener('input', function () {
+
+        const nombre = this.value.trim();
+
+        estudianteId.value = '';
+
+        clearTimeout(temporizador);
+
+        if (nombre.length < 2) {
+            sugerencias.innerHTML = '';
+            sugerencias.style.display = 'none';
+            return;
+        }
+
+        temporizador = setTimeout(() => {
+
+            fetch(`/buscar-estudiantes?nombre=${encodeURIComponent(nombre)}`)
+                .then(response => response.json())
+                .then(estudiantes => {
+
+                    sugerencias.innerHTML = '';
+
+                    if (estudiantes.length === 0) {
+
+                        sugerencias.innerHTML = `
+                            <div class="mensaje-sugerencia">
+                                No se encontraron estudiantes.
+                            </div>
+                        `;
+
+                        sugerencias.style.display = 'block';
+
+                        return;
+                    }
+
+                    estudiantes.forEach(estudiante => {
+
+                        const elemento = document.createElement('div');
+
+                        elemento.classList.add('sugerencia');
+
+                        elemento.textContent = estudiante.nombre;
+
+                        elemento.addEventListener('click', function () {
+
+                            campoNombre.value = estudiante.nombre;
+
+                            estudianteId.value = estudiante.id;
+
+                            sugerencias.innerHTML = '';
+
+                            sugerencias.style.display = 'none';
+
+                            console.log(
+                                'Estudiante seleccionado:',
+                                estudiante.id,
+                                estudiante.nombre
+                            );
+
+                        });
+
+                        sugerencias.appendChild(elemento);
+
+                    });
+
+                    sugerencias.style.display = 'block';
+
+                })
+                .catch(error => {
+
+                    console.error(
+                        'Error al buscar estudiantes:',
+                        error
+                    );
+
+                    sugerencias.innerHTML = `
+                        <div class="mensaje-sugerencia">
+                            Ocurrió un error al realizar la búsqueda.
+                        </div>
+                    `;
+
+                    sugerencias.style.display = 'block';
+
+                });
+
+        }, 250);
+
+    });
+
+
+    document.addEventListener('click', function (event) {
+
+        if (!event.target.closest('.buscador-estudiante')) {
+
+            sugerencias.innerHTML = '';
+
+            sugerencias.style.display = 'none';
+
+        }
+
+    });
+
+</script>
 </body>
 </html>
