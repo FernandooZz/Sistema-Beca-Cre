@@ -40,9 +40,54 @@ Route::get('/listado-estudiantes', function () {
         ->orderByDesc('fecha_registro')
         ->get();
 
-    return view('listado-estudiantes', compact('estudiantes'));
+    $cantidadRegistrados = $estudiantes->count();
+
+    return view('listado-estudiantes', compact(
+        'estudiantes',
+        'cantidadRegistrados'
+    ));
 })->middleware('admin');
 
+
+// AGREGAR OPCION DE DESCARGAR ARCHIVO CSV
+Route::get('/descargar-estudiantes-csv', function () {
+    $estudiantes = \App\Models\Estudiante::with('carrera')
+        ->whereNotNull('carrera_id')
+        ->orderBy('nombre')
+        ->get();
+
+    $nombreArchivo = 'estudiantes_registrados.csv';
+
+    $headers = [
+        'Content-Type' => 'text/csv; charset=UTF-8',
+        'Content-Disposition' => 'attachment; filename="' . $nombreArchivo . '"',
+    ];
+
+    $callback = function () use ($estudiantes) {
+        $archivo = fopen('php://output', 'w');
+
+        // BOM para que Excel reconozca correctamente los caracteres
+        fprintf($archivo, chr(0xEF) . chr(0xBB) . chr(0xBF));
+
+        fputcsv($archivo, [
+            'Nombre',
+            'Carrera',
+            'Fecha de registro'
+        ], ';');
+
+        foreach ($estudiantes as $estudiante) {
+            fputcsv($archivo, [
+                $estudiante->nombre,
+                $estudiante->carrera->nombre_carrera,
+                $estudiante->fecha_registro->format('d/m/Y H:i'),
+            ], ';');
+        }
+
+        fclose($archivo);
+    };
+
+    return response()->stream($callback, 200, $headers);
+})->middleware('admin');
 
 Route::get('/buscar-estudiantes', [EstudianteController::class, 'buscar'])
     ->name('estudiantes.buscar');

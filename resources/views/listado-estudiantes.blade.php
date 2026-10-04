@@ -60,13 +60,13 @@
         }
 
         .barra {
-            padding: 18px 20px;
-            border-bottom: 1px solid #e5e5e5;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-        }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin: 15px 22px 20px 22px;
+    flex-wrap: wrap;
+}
 
         .cantidad {
             font-size: 14px;
@@ -133,10 +133,7 @@
                 font-size: 22px;
             }
 
-            .barra {
-                align-items: stretch;
-                flex-direction: column;
-            }
+
 
             .buscador {
                 width: 100%;
@@ -156,6 +153,22 @@
 
 .boton-cerrar-sesion:hover {
     background: #b02a37;
+}
+
+
+.boton-descargar {
+    display: inline-block;
+    background: #198754;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.boton-descargar:hover {
+    background: #157347;
 }
     </style>
 </head>
@@ -192,12 +205,17 @@
         <section class="tarjeta">
 
             <div class="barra">
+    <span class="cantidad">
+        Estudiantes registrados: {{ $cantidadRegistrados }}
+    </span>
 
-                <span class="cantidad">
-                    Estudiantes registrados
-                </span>
-
-            </div>
+    <a
+        href="{{ url('/descargar-estudiantes-csv') }}"
+        class="boton-descargar"
+    >
+        Descargar CSV
+    </a>
+</div>
 
             <div class="tabla-contenedor">
 
