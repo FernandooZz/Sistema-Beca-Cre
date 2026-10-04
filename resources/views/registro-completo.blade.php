@@ -119,8 +119,10 @@
             Ahora puedes consultar el aula asignada para tu examen.
         </p>
 
-        <a href="#" class="boton">
-            Ver mi aula
+        <a
+            href="{{ url('/tarjeta-presentacion') }}?estudiante_id={{ request('estudiante_id') }}"
+            class="boton">
+                Ver mi aula
         </a>
 
     </main>

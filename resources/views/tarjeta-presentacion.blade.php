@@ -353,24 +353,24 @@
                     </h2>
 
                     <div class="dato">
-                        <span class="etiqueta">
-                            Nombre
-                        </span>
+    <span class="etiqueta">
+        Nombre
+    </span>
 
-                        <span class="valor">
-                            Ejemplo Estudiante
-                        </span>
-                    </div>
+    <span class="valor">
+        {{ $estudiante->nombre }}
+    </span>
+</div>
 
-                    <div class="dato">
-                        <span class="etiqueta">
-                            Carrera de interés
-                        </span>
+<div class="dato">
+    <span class="etiqueta">
+        Carrera de interés
+    </span>
 
-                        <span class="valor">
-                            Ingeniería de Sistemas
-                        </span>
-                    </div>
+    <span class="valor">
+        {{ $estudiante->carrera->nombre_carrera }}
+    </span>
+</div>
 
                 </section>
 
@@ -389,8 +389,8 @@
                         </span>
 
                         <span class="valor">
-                            E
-                        </span>
+    {{ $estudiante->asignacionAula->bloque }}
+</span>
 
                     </div>
 
@@ -401,8 +401,8 @@
                         </span>
 
                         <span class="valor">
-                            5
-                        </span>
+    {{ $estudiante->asignacionAula->piso }}
+</span>
 
                     </div>
 
@@ -413,8 +413,8 @@
                         </span>
 
                         <span class="aula-numero">
-                            E-504
-                        </span>
+    {{ $estudiante->asignacionAula->aula }}
+</span>
 
                     </div>
 

@@ -207,29 +207,17 @@
             <label for="carrera">Seleccione una carrera</label>
 
             <select id="carrera" name="carrera">
-                <option value="">Seleccione una carrera</option>
-                <option>Administración General</option>
-                <option>Administración de Turismo</option>
-                <option>Ingeniería Comercial</option>
-                <option>Comercio Internacional</option>
-                <option>Ingeniería en Marketing y Publicidad</option>
-                <option>Contaduría Pública</option>
-                <option>Ingeniería Financiera</option>
-                <option>Comunicación Estratégica y Digital</option>
-                <option>Ingeniería Industrial y Comercial</option>
-                <option>Ingeniería Electrónica y Sistemas</option>
-                <option>Ingeniería Mecánica Automotriz y Agroindustrial</option>
-                <option>Ingeniería de Sistemas</option>
-                <option>Ingeniería Eléctrica</option>
-                <option>Ingeniería de Alimentos y Negocios</option>
-                <option>Derecho</option>
-                <option>Relaciones Internacionales</option>
-                <option>Psicología</option>
-                <option>Otros</option>
-            </select>
+    <option value="">Seleccione una carrera</option>
+
+    @foreach ($carreras as $carrera)
+        <option value="{{ $carrera->id }}">
+            {{ $carrera->nombre_carrera }}
+        </option>
+    @endforeach
+</select>
         </div>
 
-        <button type="button" class="boton">
+        <button type="button" class="boton" id="botonIngresar">
             Ingresar
         </button>
 
@@ -347,6 +335,58 @@
         }
 
     });
+
+    const botonIngresar = document.getElementById('botonIngresar');
+const carrera = document.getElementById('carrera');
+
+botonIngresar.addEventListener('click', function () {
+
+    const idEstudiante = estudianteId.value;
+    const idCarrera = carrera.value;
+
+    if (!idEstudiante) {
+        alert('Seleccione un estudiante de la lista.');
+        return;
+    }
+
+    if (!idCarrera) {
+        alert('Seleccione una carrera.');
+        return;
+    }
+
+    fetch('{{ route('estudiantes.registrar') }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            estudiante_id: idEstudiante,
+            carrera_id: idCarrera
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        if (data.success) {
+    window.location.href =
+        `/registro-completo?estudiante_id=${data.estudiante_id}`;
+
+    return;
+}
+        alert('No se pudo completar el registro.');
+
+    })
+    .catch(error => {
+
+        console.error('Error al registrar:', error);
+
+        alert('Ocurrió un error al realizar el registro.');
+
+    });
+
+});
 
 </script>
 </body>
