@@ -179,7 +179,7 @@
             class="logo"
         >
 
-        <h1 class="titulo">Hello Crack</h1>
+        <h1 class="titulo">Hola, bienvenido</h1>
 
         <p class="subtitulo">
             Regístrate para conocer tu aula
