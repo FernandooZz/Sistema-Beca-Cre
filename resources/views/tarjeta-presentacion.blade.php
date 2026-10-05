@@ -434,12 +434,12 @@
                     >
 
                         <img
-    src="{{ asset($estudiante->asignacionAula->piso == '5'
-        ? 'images/croquis_utepsa.webp'
-        : 'images/croquis_2.webp') }}"
-    alt="Croquis del piso {{ $estudiante->asignacionAula->piso }}"
-    class="croquis"
->
+                            src="{{ asset($estudiante->asignacionAula->piso == '5'
+                            ? 'images/croquis_quinto_piso.webp'
+                            : 'images/croquis_sexto_piso.webp') }}"
+                        alt="Croquis del piso {{ $estudiante->asignacionAula->piso }}"
+                        class="croquis"
+                        >
 
                         <div class="croquis-ayuda">
                             Toque el croquis para ampliarlo
@@ -471,16 +471,16 @@
             ×
         </button>
 
-        <div class="modal-contenido">
+            <div class="modal-contenido">
 
-            <img
-                id="croquisAmpliado"
-                src="{{ asset('images/croquis_utepsa.webp') }}"
-                alt="Croquis ampliado"
-                class="croquis-ampliado"
-            >
+                <img
+                    id="croquisAmpliado"
+                    src="{{ asset('images/croquis_quinto_piso.webp') }}"
+                    alt="Croquis ampliado"
+                    class="croquis-ampliado"
+                >
 
-        </div>
+            </div>
 
         <div class="controles-zoom">
 
@@ -488,7 +488,6 @@
                 class="boton-zoom"
                 onclick="zoom(-0.2)"
             >
-                −
             </button>
 
             <button
@@ -558,12 +557,16 @@
             actualizarZoom();
         }
 
-        function actualizarZoom() {
 
-            const imagen = document.getElementById('croquisAmpliado');
+            function actualizarZoom() {
 
+            const imagenes = document.querySelectorAll('.croquis-ampliado');
+
+            imagenes.forEach(imagen => {
             imagen.style.transform = `scale(${escala})`;
-        }
+        });
+
+    }
 
         document.getElementById('modalCroquis').addEventListener(
             'click',
