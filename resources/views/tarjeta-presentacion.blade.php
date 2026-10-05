@@ -434,10 +434,12 @@
                     >
 
                         <img
-                            src="{{ asset('images/croquis_utepsa.webp') }}"
-                            alt="Croquis de ubicación"
-                            class="croquis"
-                        >
+    src="{{ asset($estudiante->asignacionAula->piso == '5'
+        ? 'images/croquis_utepsa.webp'
+        : 'images/croquis_2.webp') }}"
+    alt="Croquis del piso {{ $estudiante->asignacionAula->piso }}"
+    class="croquis"
+>
 
                         <div class="croquis-ayuda">
                             Toque el croquis para ampliarlo
