@@ -33,7 +33,7 @@
             width: 100%;
             background: #ffffff;
             border: 1px solid #e5e5e5;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
         }
 
@@ -129,7 +129,7 @@
             padding: 13px;
             background: #e7f8f1;
             text-align: center;
-            border-radius: 5px;
+            border-radius: 10px;
         }
 
         .aula-label {

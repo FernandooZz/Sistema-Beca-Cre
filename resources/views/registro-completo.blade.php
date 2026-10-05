@@ -68,6 +68,7 @@
             display: block;
             width: 100%;
             border: none;
+            border-radius: 10px;
             background: #00c875;
             color: white;
             padding: 12px;

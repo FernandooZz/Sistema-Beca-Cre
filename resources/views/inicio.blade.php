@@ -82,6 +82,7 @@
         .boton {
             width: 100%;
             border: none;
+            border-radius: 10px;
             background: #00c875;
             color: white;
             padding: 12px;
@@ -166,9 +167,6 @@
     </style>
 </head>
 
-
-
-
 <body>
 
     <main class="contenedor">
@@ -179,15 +177,15 @@
             class="logo"
         >
 
-        <h1 class="titulo">Hola, bienvenido</h1>
+        <h1 class="titulo">¡Bienvenido!</h1>
 
         <p class="subtitulo">
-            Regístrate para conocer tu aula
+            Registra tus datos para consultar el aula donde realizarás tu examen.
         </p>
 
-        <div class="campo">
+<div class="campo">
 
-    <label for="nombre">Nombre completo</label>
+    <label for="nombre">Nombre completo o número de C.I</label>
 
     <div class="buscador-estudiante">
 
@@ -195,7 +193,7 @@
             type="text"
             id="nombre"
             name="nombre"
-            placeholder="Ingrese su nombre"
+            placeholder="Nombre o número de C.I"
             autocomplete="off"
         >
 
@@ -214,10 +212,33 @@
 
 </div>
 
-        <div class="campo">
-            <label for="carrera">Seleccione una carrera</label>
+<div class="campo">
+    <label for="celular">Número de celular</label>
+    <input
+            type="number"
+            id="celular"
+            name="celular"
+            placeholder="Ingrese su número de celular"
+            autocomplete="off"
+        >
+</div>
 
-            <select id="carrera" name="carrera">
+<div class="campo">
+    <label for="colegio">Colegio</label>
+    <input
+            type="text"
+            id="colegio"
+            name="colegio"
+            placeholder="Ingrese el nombre de su colegio"
+            autocomplete="off"
+        >
+</div>
+
+
+<div class="campo">
+    <label for="carrera">Seleccione la carrera carrera que desea estudiar</label>
+
+    <select id="carrera" name="carrera">
     <option value="">Seleccione una carrera</option>
 
     @foreach ($carreras as $carrera)

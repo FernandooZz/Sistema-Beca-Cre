@@ -54,7 +54,7 @@
 
         .tarjeta {
             background: #ffffff;
-            border-radius: 4px;
+            border-radius: 10px;
             border: 1px solid #e5e5e5;
             overflow: hidden;
         }
@@ -141,15 +141,15 @@
         }
 
         .boton-cerrar-sesion {
-    background: #dc3545;
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-}
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
 
 .boton-cerrar-sesion:hover {
     background: #b02a37;
@@ -158,7 +158,7 @@
 
 .boton-descargar {
     display: inline-block;
-    background: #198754;
+    background: #00c875;
     color: white;
     text-decoration: none;
     padding: 10px 18px;
@@ -199,7 +199,7 @@
         </h1>
 
         <p class="subtitulo">
-            Listado de estudiantes que registraron su carrera de interés.
+            Listado de estudiantes que se registraron para el examen.
         </p>
 
         <section class="tarjeta">
