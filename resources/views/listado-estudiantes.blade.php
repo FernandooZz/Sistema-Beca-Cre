@@ -178,7 +178,7 @@
     <header class="encabezado">
 
         <img
-            src="{{ asset('images/logo-examen-beca.png') }}"
+            src="{{ asset('images/logoCre.webp') }}"
             alt="Examen de Beca Bachiller"
             class="logo"
         >
