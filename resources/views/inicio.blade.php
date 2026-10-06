@@ -239,7 +239,7 @@
 
 
 <div class="campo">
-    <label for="carrera">Seleccione la carrera carrera que desea estudiar</label>
+    <label for="carrera">Seleccione la carrera que desea estudiar</label>
 
     <select id="carrera" name="carrera">
     <option value="">Seleccione una carrera</option>

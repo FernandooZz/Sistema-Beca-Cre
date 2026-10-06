@@ -5,7 +5,38 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdministradorController;
 
 Route::get('/', function () {
-    $carreras = \App\Models\Carrera::orderBy('nombre_carrera')->get();
+    $ordenCarreras = [
+        'Administración General',
+        'Administración de Turismo',
+        'Ingeniería Comercial',
+        'Comercio Internacional',
+        'Ingeniería en Marketing y Publicidad',
+        'Contaduría Pública',
+        'Ingeniería Financiera',
+        'Comunicación Estratégica y Digital',
+        'Ingeniería Industrial y Comercial',
+        'Ingeniería Electrónica y Sistemas',
+        'Ingeniería Mecánica Automotriz y Agroindustrial',
+        'Ingeniería de Sistemas',
+        'Ingeniería Eléctrica',
+        'Ingeniería de Alimentos y Negocios',
+        'Derecho',
+        'Relaciones Internacionales',
+        'Psicología',
+        'Otros',
+    ];
+
+    $carreras = \App\Models\Carrera::whereIn(
+        'nombre_carrera',
+        $ordenCarreras
+    )
+    ->get()
+    ->sortBy(function ($carrera) use ($ordenCarreras) {
+        return array_search(
+            $carrera->nombre_carrera,
+            $ordenCarreras
+        );
+    });
 
     return view('inicio', compact('carreras'));
 });
