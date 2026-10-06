@@ -215,23 +215,26 @@
 <div class="campo">
     <label for="celular">Número de celular</label>
     <input
-            type="number"
-            id="celular"
-            name="celular"
-            placeholder="Ingrese su número de celular"
-            autocomplete="off"
-        >
+    type="text"
+    id="celular"
+    name="celular"
+    placeholder="Ingrese su número de celular"
+    autocomplete="off"
+    inputmode="numeric"
+    maxlength="8"
+>
 </div>
 
 <div class="campo">
     <label for="colegio">Colegio</label>
     <input
-            type="text"
-            id="colegio"
-            name="colegio"
-            placeholder="Ingrese el nombre de su colegio"
-            autocomplete="off"
-        >
+    type="text"
+    id="colegio"
+    name="colegio"
+    placeholder="Ingrese el nombre de su colegio"
+    autocomplete="off"
+    maxlength="40"
+>
 </div>
 
 
@@ -403,7 +406,9 @@ botonIngresar.addEventListener('click', function () {
         },
         body: JSON.stringify({
             estudiante_id: idEstudiante,
-            carrera_id: idCarrera
+            carrera_id: idCarrera,
+            celular: document.getElementById('celular').value.trim(),
+            colegio: document.getElementById('colegio').value.trim()
         })
     })
     .then(response => response.json())
@@ -439,6 +444,20 @@ botonIngresar.addEventListener('click', function () {
 
     });
 
+});
+
+
+//limitar el los caracteres en el registro
+const campoCelular = document.getElementById('celular');
+
+campoCelular.addEventListener('input', function () {
+    this.value = this.value.replace(/\D/g, '').slice(0, 8);
+});
+
+const campoColegio = document.getElementById('colegio');
+
+campoColegio.addEventListener('input', function () {
+    this.value = this.value.slice(0, 100);
 });
 
 </script>

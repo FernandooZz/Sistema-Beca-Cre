@@ -9,10 +9,13 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Estudiante extends Model
 {
     protected $fillable = [
-        'nombre',
-        'carrera_id',
-        'fecha_registro',
-    ];
+    'nombre',
+    'ci',
+    'celular',
+    'colegio',
+    'carrera_id',
+    'fecha_registro',
+];
 
     protected $casts = [
         'fecha_registro' => 'datetime',

@@ -224,39 +224,30 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
+                            <th>Celular</th>
+                            <th>Colegio</th>
                             <th>Carrera</th>
                             <th>Fecha de registro</th>
+
                         </tr>
                     </thead>
 
-                    <tbody>
-
+    <tbody>
     @forelse ($estudiantes as $estudiante)
-
         <tr>
-            <td>
-                {{ $estudiante->nombre }}
-            </td>
-
-            <td>
-                {{ $estudiante->carrera->nombre_carrera }}
-            </td>
-
-            <td>
-                {{ $estudiante->fecha_registro->format('d/m/Y H:i') }}
-            </td>
+            <td>{{ $estudiante->nombre }}</td>
+            <td>{{ $estudiante->celular }}</td>
+            <td>{{ $estudiante->colegio }}</td>
+            <td>{{ $estudiante->carrera->nombre_carrera }}</td>
+            <td>{{ $estudiante->fecha_registro->format('d/m/Y H:i') }}</td>
         </tr>
-
     @empty
-
         <tr>
-            <td colspan="3">
+            <td colspan="5">
                 No hay estudiantes registrados.
             </td>
         </tr>
-
     @endforelse
-
 </tbody>
 
                 </table>
