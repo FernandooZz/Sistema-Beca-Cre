@@ -88,6 +88,7 @@
             padding: 12px;
             font-size: 14px;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .boton:hover {
@@ -152,15 +153,34 @@
     color: #777;
 }
 
-.mensaje-registrado {
-    margin-top: 20px;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
+.modal-registrado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
 }
 
-.mensaje-registrado p {
-    margin-bottom: 15px;
+.contenido-modal-registrado {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.contenido-modal-registrado p {
+    margin: 0 0 25px 0;
+    font-size: 18px;
     font-weight: 600;
 }
 
@@ -193,7 +213,7 @@
             type="text"
             id="nombre"
             name="nombre"
-            placeholder="Nombre o número de C.I"
+            placeholder="Ingrese su nombre o número de C.I"
             autocomplete="off"
         >
 
@@ -256,13 +276,14 @@
             Ingresar
         </button>
 
-        <div id="mensajeRegistrado" class="mensaje-registrado" style="display: none;">
-    <p>Este estudiante ya realizó su registro.</p>
-
-    <a id="botonVerAula" href="#" class="boton">
-        Ver mi aula
-    </a>
-</div>
+        <div id="modalRegistrado" class="modal-registrado" style="display: none;">
+            <div class="contenido-modal-registrado">
+                <p>Usted ya se encuentra registrado dentro del examen</p>
+                <a id="botonVerAula" href="#" class="boton">
+                    Ver mi aula
+                </a>
+            </div>
+        </div>
 
     </main>
 
@@ -420,19 +441,19 @@ botonIngresar.addEventListener('click', function () {
     }
 
     if (data.ya_registrado) {
-        const mensajeRegistrado =
-            document.getElementById('mensajeRegistrado');
+    const modalRegistrado =
+        document.getElementById('modalRegistrado');
 
-        const botonVerAula =
-            document.getElementById('botonVerAula');
+    const botonVerAula =
+        document.getElementById('botonVerAula');
 
-        botonVerAula.href =
-            `/tarjeta-presentacion?estudiante_id=${data.estudiante_id}`;
+    botonVerAula.href =
+        `/tarjeta-presentacion?estudiante_id=${data.estudiante_id}`;
 
-        mensajeRegistrado.style.display = 'block';
+    modalRegistrado.style.display = 'flex';
 
-        return;
-    }
+    return;
+}
 
     alert(data.message);
 })
