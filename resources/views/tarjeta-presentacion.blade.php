@@ -474,11 +474,15 @@
             <div class="modal-contenido">
 
                 <img
-                    id="croquisAmpliado"
-                    src="{{ asset('images/croquis_quinto_piso.webp') }}"
-                    alt="Croquis ampliado"
-                    class="croquis-ampliado"
-                >
+    id="croquisAmpliado"
+    src="{{ asset(
+        $estudiante->asignacionAula->piso == '5'
+            ? 'images/croquis_quinto_piso.webp'
+            : 'images/croquis_sexto_piso.webp'
+    ) }}"
+    alt="Croquis ampliado del piso {{ $estudiante->asignacionAula->piso }}"
+    class="croquis-ampliado"
+>
 
             </div>
 
