@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <title>Información del examen</title>
 
     <style>
@@ -313,6 +313,28 @@
                 font-size: 27px;
             }
         }
+
+        .cerrar-registro {
+    margin-top: 10px;
+    padding-top: 0;
+    border-top: none;
+    text-align: center;
+}
+
+.boton-cerrar-registro {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #dc2626;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.boton-cerrar-registro:hover {
+    background: #b91c1c;
+}
     </style>
 </head>
 
@@ -451,7 +473,14 @@
 
             </div>
 
+
         </section>
+
+<div class="cerrar-registro">
+                <a href="{{ url('/') }}" class="boton-cerrar-registro">
+                Cerrar sesión
+                </a>
+            </div>
 
     </main>
 
