@@ -315,26 +315,26 @@
         }
 
         .cerrar-registro {
-    margin-top: 10px;
-    padding-top: 0;
-    border-top: none;
-    text-align: center;
-}
+            margin-top: 10px;
+            padding-top: 0;
+            border-top: none;
+            text-align: center;
+        }
 
-.boton-cerrar-registro {
-    display: inline-block;
-    padding: 12px 25px;
-    background: #dc2626;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    width: 100%;
-}
+        .boton-cerrar-registro {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #dc2626;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+        }
 
-.boton-cerrar-registro:hover {
-    background: #b91c1c;
-}
+        .boton-cerrar-registro:hover {
+            background: #b91c1c;
+        }
     </style>
 </head>
 
@@ -349,7 +349,7 @@
             <header class="cabecera">
 
                 <img
-                    src="{{ asset('images/logoCre.webp') }}"
+                    src="{{ asset('images/logoCree.webp') }}"
                     alt="Examen de Beca Bachiller"
                     class="logo"
                 >
@@ -375,24 +375,24 @@
                     </h2>
 
                     <div class="dato">
-    <span class="etiqueta">
-        Nombre
-    </span>
+                        <span class="etiqueta">
+                            Nombre
+                        </span>
 
-    <span class="valor">
-        {{ $estudiante->nombre }}
-    </span>
-</div>
+                        <span class="valor">
+                            {{ $estudiante->nombre }}
+                        </span>
+                    </div>
 
-<div class="dato">
-    <span class="etiqueta">
-        Carrera de interés
-    </span>
+                    <div class="dato">
+                        <span class="etiqueta">
+                            Carrera de interés
+                        </span>
 
-    <span class="valor">
-        {{ $estudiante->carrera->nombre_carrera }}
-    </span>
-</div>
+                        <span class="valor">
+                            {{ $estudiante->carrera->nombre_carrera }}
+                        </span>
+                    </div>
 
                 </section>
 
@@ -411,8 +411,8 @@
                         </span>
 
                         <span class="valor">
-    {{ $estudiante->asignacionAula->bloque }}
-</span>
+                            {{ $estudiante->asignacionAula->bloque }}
+                        </span>
 
                     </div>
 
@@ -423,8 +423,8 @@
                         </span>
 
                         <span class="valor">
-    {{ $estudiante->asignacionAula->piso }}
-</span>
+                            {{ $estudiante->asignacionAula->piso }}
+                        </span>
 
                     </div>
 
@@ -435,8 +435,8 @@
                         </span>
 
                         <span class="aula-numero">
-    {{ $estudiante->asignacionAula->aula }}
-</span>
+                            {{ $estudiante->asignacionAula->aula }}
+                        </span>
 
                     </div>
 

@@ -60,13 +60,13 @@
         }
 
         .barra {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    margin: 15px 22px 20px 22px;
-    flex-wrap: wrap;
-}
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 22px 20px 22px;
+            flex-wrap: wrap;
+        }
 
         .cantidad {
             font-size: 14px;
@@ -151,25 +151,25 @@
         cursor: pointer;
     }
 
-.boton-cerrar-sesion:hover {
-    background: #b02a37;
-}
+        .boton-cerrar-sesion:hover {
+            background: #b02a37;
+        }
 
 
-.boton-descargar {
-    display: inline-block;
-    background: #00c875;
-    color: white;
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-}
+        .boton-descargar {
+            display: inline-block;
+            background: #00c875;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
 
-.boton-descargar:hover {
-    background: #157347;
-}
+        .boton-descargar:hover {
+            background: #157347;
+        }
     </style>
 </head>
 
@@ -178,7 +178,7 @@
     <header class="encabezado">
 
         <img
-            src="{{ asset('images/logoCre.webp') }}"
+            src="{{ asset('images/logoCree.webp') }}"
             alt="Examen de Beca Bachiller"
             class="logo"
         >

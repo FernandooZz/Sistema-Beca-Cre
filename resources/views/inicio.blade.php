@@ -193,7 +193,7 @@
     <main class="contenedor">
 
         <img
-            src="{{ asset('images/logoCre.webp') }}"
+            src="{{ asset('images/logoCree.webp') }}"
             alt="Examen de Beca Bachiller"
             class="logo"
         >
