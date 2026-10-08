@@ -113,77 +113,77 @@
             }
         }
 
-.buscador-estudiante {
-    position: relative;
-}
+        .buscador-estudiante {
+            position: relative;
+        }
 
-.sugerencias {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    border: 1px solid #dddddd;
-    border-top: none;
-    z-index: 100;
-    display: none;
-    max-height: 220px;
-    overflow-y: auto;
-}
+        .sugerencias {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #dddddd;
+            border-top: none;
+            z-index: 100;
+            display: none;
+            max-height: 220px;
+            overflow-y: auto;
+        }
 
-.sugerencia {
-    padding: 11px 8px;
-    font-size: 13px;
-    color: #333;
-    cursor: pointer;
-    border-bottom: 1px solid #eeeeee;
-    background: #ffffff;
-}
+        .sugerencia {
+            padding: 11px 8px;
+            font-size: 13px;
+            color: #333;
+            cursor: pointer;
+            border-bottom: 1px solid #eeeeee;
+            background: #ffffff;
+        }
 
-.sugerencia:hover {
-    background: #f5f5f5;
-}
+        .sugerencia:hover {
+            background: #f5f5f5;
+        }
 
-.sugerencia:last-child {
-    border-bottom: none;
-}
+        .sugerencia:last-child {
+            border-bottom: none;
+        }
 
-.mensaje-sugerencia {
-    padding: 11px 8px;
-    font-size: 13px;
-    color: #777;
-}
+        .mensaje-sugerencia {
+            padding: 11px 8px;
+            font-size: 13px;
+            color: #777;
+        }
 
-.modal-registrado {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+        .modal-registrado {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-    z-index: 9999;
-}
+            z-index: 9999;
+        }
 
-.contenido-modal-registrado {
-    background: white;
-    width: 90%;
-    max-width: 450px;
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
+        .contenido-modal-registrado {
+            background: white;
+            width: 90%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
 
-.contenido-modal-registrado p {
-    margin: 0 0 25px 0;
-    font-size: 18px;
-    font-weight: 600;
-}
+        .contenido-modal-registrado p {
+            margin: 0 0 25px 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
 
     </style>
 </head>
@@ -258,7 +258,6 @@
 >
 </div>
 
-
 <div class="campo">
     <label for="carrera">Seleccione la carrera que desea estudiar</label>
 
@@ -287,9 +286,6 @@
         </div>
 
     </main>
-
-
-
 
     <script>
 
@@ -402,9 +398,9 @@
     });
 
     const botonIngresar = document.getElementById('botonIngresar');
-const carrera = document.getElementById('carrera');
+    const carrera = document.getElementById('carrera');
 
-botonIngresar.addEventListener('click', function () {
+    botonIngresar.addEventListener('click', function () {
 
     const idEstudiante = estudianteId.value;
     const idCarrera = carrera.value;
@@ -469,18 +465,18 @@ botonIngresar.addEventListener('click', function () {
 });
 
 
-//limitar el los caracteres en el registro
-const campoCelular = document.getElementById('celular');
+    //limitar el los caracteres en el registro
+    const campoCelular = document.getElementById('celular');
 
-campoCelular.addEventListener('input', function () {
-    this.value = this.value.replace(/\D/g, '').slice(0, 8);
-});
+    campoCelular.addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, '').slice(0, 8);
+    });
 
-const campoColegio = document.getElementById('colegio');
+    const campoColegio = document.getElementById('colegio');
 
-campoColegio.addEventListener('input', function () {
-    this.value = this.value.slice(0, 100);
-});
+    campoColegio.addEventListener('input', function () {
+        this.value = this.value.slice(0, 100);
+    });
 
 </script>
 </body>

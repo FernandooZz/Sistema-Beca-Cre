@@ -102,6 +102,8 @@ Route::get('/descargar-estudiantes-csv', function () {
 
         fputcsv($archivo, [
             'Nombre',
+            'Celular',
+            'Colegio',
             'Carrera',
             'Fecha de registro'
         ], ';');
@@ -109,6 +111,8 @@ Route::get('/descargar-estudiantes-csv', function () {
         foreach ($estudiantes as $estudiante) {
             fputcsv($archivo, [
                 $estudiante->nombre,
+                $estudiante->celular,
+                $estudiante->colegio,
                 $estudiante->carrera->nombre_carrera,
                 $estudiante->fecha_registro->format('d/m/Y H:i'),
             ], ';');
